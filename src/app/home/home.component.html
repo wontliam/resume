@@ -1,19 +1,24 @@
-<div class="container d-flex flex-row">
-  <div
-    class="d-flex flex-column"
-    style="min-width: 100px;"
-  >
-    Avatar placeholder
+<div class="d-flex flex-row"
+  style="
+    padding: 0;
+    min-height: 100vh;
+  "
+>
+  <div class="d-flex flex-column justify-content-start align-items-center flex-shrink-0 pt-4"
+       style="width: 300px; position: sticky; top: 0; align-self: flex-start; height: 100vh;">
+    <img src="assets/images/will.jpeg" style="width: 150px; border-radius: 50%; margin-bottom: 1rem;" />
+    <i>Graduation Day 2022</i>
   </div>
-  <div
-    class="d-flex flex-column justify-content-start align-items-start flex-grow-1"
+
+  <div class="d-flex flex-column justify-content-start align-items-start flex-grow-1 pt-4"
     style="
-      min-height: 90vh;
+      flex-basis: 1000px;
+      max-width: 1800px;
     "
   >
     <section id="about" class="container">
-      <h3>About Me</h3>
-      <p>👋 Hi there! I’m <strong>William Le</strong>, a full-stack software engineer with a background in <strong>Math and Astronomy</strong>. I earned my <strong>Bachelor's degree in Computer Science</strong> from New Mexico State University, where I also minored in Astronomy.</p>
+      <h3 class="mb-4">About Me</h3>
+      <p>👋 Hi there! I’m <strong>Will</strong>, a full-stack software engineer with a background in <strong>Math and Astronomy</strong>. I earned my <strong>Bachelor's degree in Computer Science</strong> from New Mexico State University, where I also minored in Astronomy.</p>
     
       <p>I’m passionate about building software that solves real-world problems and creates practical value. I currently work at a software company in <strong>El Paso, Texas</strong>, where I'm helping build a <strong>logistics web application</strong> using <strong>Vue</strong> and <strong>ASP.NET Core</strong>.</p>
     
@@ -33,93 +38,113 @@
 
     <section id="experience" class="container">
       <h3 class="mb-4">Professional Experience</h3>
-      <div class="accordion .accordion-flush" id="timelineAccordion">
-        <!-- Job 1 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="jobOne">
-            <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#jobOneCollapse">
-              Software Engineer – Steele Consulting Inc., El Paso, TX (Dec 2022 – Present)
+      <div class="accordion accordion-flush" id="timelineAccordion">
+        <!-- Job -->
+        <div class="accordion-item" *ngFor="let job of professional_experience; let i = index">
+          <h2 class="accordion-header" [id]="'jobHeader' + i">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="collapse" 
+              [attr.data-bs-target]="'#jobCollapse' + i"
+            >
+              <!-- Title – Company, Location (Duration) -->
+              <div class="col">{{job.jobTitle}} - {{job.company}}, {{job.location}}</div>
+              <div class="col" style="text-align: end;">({{job.duration}})</div>
             </button>
           </h2>
-          <div id="jobOneCollapse" class="accordion-collapse collapse">
+          <div [id]="'jobCollapse' + i" class="accordion-collapse collapse">
             <div class="accordion-body">
-              <div class="accordion .accordion-flush" id="projects">
+              <div class="accordion .accordion-flush" id="projects" *ngFor="let project of job.projects; let j = index">
 
-                <!-- Project 1 -->
+                <!-- Project -->
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="projectOne">
-                    <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#projectOneCollapse">
-                      Traxión - Traxporta - FastTrax (Sep 2024 – Present)
+                  <h2 class="accordion-header" [id]="'project' + i + j">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      aria-expanded="false"
+                      data-bs-toggle="collapse"
+                      [attr.data-bs-target]="'#projectCollapse' + i + j"
+                    >
+                      <!-- Company - Project Name (Duration) -->
+                      <div class="col">{{project.company}} - {{project.projectName}}</div>
+                      <div class="col" style="text-align: end;">({{project.duration}})</div>
                     </button>
                   </h2>
-                  <div id="projectOneCollapse" class="accordion-collapse collapse">
+                  <div [id]="'projectCollapse' + i + j" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                      <strong>Logistics Web Portal</strong>
-                      <ul>
-                        <li>Designed and implemented frontend components using Vue.js with Syncfusion UI.</li>
-                        <li>Built RESTful APIs using ASP.NET Core to manage route data and dispatch operations.</li>
-                        <li>Collaborated with stakeholders to refine project scope and delivery timeline.</li>
+                      <p><em>{{project.projectType}}</em></p>
+                      <p>
+                        <strong>Technologies: </strong>
+                        <ng-container *ngFor="let tech of project.technologies">
+                          <span class="badge bg-secondary me-1">{{tech}}</span>
+                        </ng-container>
+                      </p>
+                      <ul *ngFor="let description of project.descriptions">
+                        <li>{{description}}</li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="projectTwo">
-                    <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#projectTwoCollapse">
-                      Traxión - Traxporta - FastTrax (Sep 2024 – Present)
-                    </button>
-                  </h2>
-                  <div id="projectTwoCollapse" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                      <strong>Logistics Web Portal</strong>
-                      <ul>
-                        <li>Built dynamic UI components with Vue.</li>
-                        <li>Built backend with C# .NET.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
-    
-        <!-- Job 2 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="jobTwo">
-            <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#jobTwoCollapse">
-              Software Engineering Intern – Steele Consulting Inc. (Summer 2022)
-            </button>
-          </h2>
-          <div id="jobTwoCollapse" class="accordion-collapse collapse">
-            <div class="accordion-body">
-              <strong>Healthcare Web Portal</strong>
-              <ul>
-                <li>Built dynamic UI components with Angular.</li>
-                <li>Wrote unit tests using Jasmine and Karma for frontend logic.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    
       </div>
     </section>
 
     <section id="education" class="container">
       <h3 class="mb-4">Education</h3>
-      <h5><strong>New Mexico State University</strong></h5>
-      <p>Bachelor of Science in Computer Science - Minor in Astronomy</p>
-      <p>Jan 2019 - Dec 2022</p>
-      <p>Relevant Coursework: Data Structures, Algorithms, Software Engineering, Database Management Systems, Web Development</p>
-      <p>GPA: 3.87</p>
+      <div>
+        <div class="row">
+          <span class="col col-6">
+            <h5><strong>New Mexico State University</strong></h5>
+          </span>
+          <span class="col col-6 text-end">
+            <p>Jan 2019 – Dec 2022</p>
+          </span>
+        </div>
+        <p><em>Bachelor of Science in Computer Science — Minor in Astronomy</em></p>
+        <p><strong>GPA:</strong> 3.87</p>
+        <p><strong>Relevant Coursework:</strong></p>
+        <ul>
+          <li>Data Structures & Algorithms</li>
+          <li>Software Engineering</li>
+          <li>Database Management Systems</li>
+          <li>Compilers</li>
+          <li>Operating Systems</li>
+          <li>Introduction to AI</li>
+          <li>Game Development</li>
+        </ul>
+      </div>
     </section>
 
     <section id="contact" class="container">
       <h3 class="mb-4">Contact Me</h3>
-      <p><strong>LinkedIn: </strong>https://www.linkedin.com/in/william-thinh-le/</p>
-      <p><strong>Email: </strong>williamle&#64;2305gmail.com</p>
+      <div class="d-flex flex-row flex-wrap">
+        <div class="me-4">
+          <a href="mailto:williamle2305@gmail.com" class="contact-link">EMAIL</a>
+        </div>
+        <div class="me-4">
+          <a href="https://www.linkedin.com/in/william-thinh-le/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            LINKEDIN
+          </a>
+        </div>
+        <div class="me-4">
+          <a href="https://github.com/wontliam" target="_blank" rel="noopener noreferrer" class="contact-link">
+            GITHUB
+          </a>
+        </div>
+      </div>
     </section>
+  
+  </div>
+
+  <div class="d-flex flex-column justify-content-start align-items-center flex-shrink-0 pt-4"
+       style="width: 300px; position: sticky; top: 0; align-self: flex-start; height: 100vh;">
+       <button type="button" class="btn btn-dark" (click)="onDownloadResume()">Download Resume</button>
   </div>
 </div>

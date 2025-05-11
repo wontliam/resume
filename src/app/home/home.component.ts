@@ -90,4 +90,8 @@ export class HomeComponent {
   ngOnInit() {
     // Component initialization logic can go here
   }
+
+  onDownloadResume() {
+    console.log('Download Resume button clicked');
+  }
 }

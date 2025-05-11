@@ -75,7 +75,13 @@
                   </h2>
                   <div [id]="'projectCollapse' + i + j" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                      <strong>{{project.projectType}}</strong>
+                      <p><em>{{project.projectType}}</em></p>
+                      <p>
+                        <strong>Technologies: </strong>
+                        <ng-container *ngFor="let tech of project.technologies">
+                          <span class="badge bg-secondary me-1">{{tech}}</span>
+                        </ng-container>
+                      </p>
                       <ul *ngFor="let description of project.descriptions">
                         <li>{{description}}</li>
                       </ul>

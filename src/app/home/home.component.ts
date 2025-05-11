@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
 interface Project {
@@ -22,7 +22,7 @@ interface Experience {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

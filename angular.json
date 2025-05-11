@@ -16,6 +16,7 @@
             "outputPath": "dist/resume",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/resume/",
             "polyfills": [
               "zone.js"
             ],

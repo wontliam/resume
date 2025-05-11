@@ -22,7 +22,7 @@
   >
     <section id="about" class="container">
       <h3>About Me</h3>
-      <p>👋 Hi there! I’m <strong>William Le</strong>, a full-stack software engineer with a background in <strong>Math and Astronomy</strong>. I earned my <strong>Bachelor's degree in Computer Science</strong> from New Mexico State University, where I also minored in Astronomy.</p>
+      <p>👋 Hi there! I’m <strong>Will</strong>, a full-stack software engineer with a background in <strong>Math and Astronomy</strong>. I earned my <strong>Bachelor's degree in Computer Science</strong> from New Mexico State University, where I also minored in Astronomy.</p>
     
       <p>I’m passionate about building software that solves real-world problems and creates practical value. I currently work at a software company in <strong>El Paso, Texas</strong>, where I'm helping build a <strong>logistics web application</strong> using <strong>Vue</strong> and <strong>ASP.NET Core</strong>.</p>
     
@@ -42,77 +42,55 @@
 
     <section id="experience" class="container">
       <h3 class="mb-4">Professional Experience</h3>
-      <div class="accordion .accordion-flush" id="timelineAccordion">
-        <!-- Job 1 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="jobOne">
-            <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#jobOneCollapse">
-              Software Engineer – Steele Consulting Inc., El Paso, TX (Dec 2022 – Present)
+      <div class="accordion accordion-flush" id="timelineAccordion">
+        <!-- Job -->
+        <div class="accordion-item" *ngFor="let job of professional_experience; let i = index">
+          <h2 class="accordion-header" [id]="'jobHeader' + i">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="collapse" 
+              [attr.data-bs-target]="'#jobCollapse' + i"
+            >
+              <!-- Title – Company, Location (Duration) -->
+              <div class="col">{{job.jobTitle}} - {{job.company}}, {{job.location}}</div>
+              <div class="col" style="text-align: end;">({{job.duration}})</div>
             </button>
           </h2>
-          <div id="jobOneCollapse" class="accordion-collapse collapse">
+          <div [id]="'jobCollapse' + i" class="accordion-collapse collapse">
             <div class="accordion-body">
-              <div class="accordion .accordion-flush" id="projects">
+              <div class="accordion .accordion-flush" id="projects" *ngFor="let project of job.projects; let j = index">
 
-                <!-- Project 1 -->
+                <!-- Project -->
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="projectOne">
-                    <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#projectOneCollapse">
-                      Traxión - Traxporta - FastTrax (Sep 2024 – Present)
+                  <h2 class="accordion-header" [id]="'project' + j">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      aria-expanded="false"
+                      data-bs-toggle="collapse"
+                      [attr.data-bs-target]="'#projectCollapse' + j"
+                    >
+                      <!-- Company - Project Name (Duration) -->
+                      <div class="col">{{project.company}} - {{project.projectName}}</div>
+                      <div class="col" style="text-align: end;">({{project.duration}})</div>
                     </button>
                   </h2>
-                  <div id="projectOneCollapse" class="accordion-collapse collapse">
+                  <div [id]="'projectCollapse' + j" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                      <strong>Logistics Web Portal</strong>
-                      <ul>
-                        <li>Designed and implemented frontend components using Vue.js with Syncfusion UI.</li>
-                        <li>Built RESTful APIs using ASP.NET Core to manage route data and dispatch operations.</li>
-                        <li>Collaborated with stakeholders to refine project scope and delivery timeline.</li>
+                      <strong>{{project.projectType}}</strong>
+                      <ul *ngFor="let description of project.descriptions">
+                        <li>{{description}}</li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="projectTwo">
-                    <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#projectTwoCollapse">
-                      Traxión - Traxporta - FastTrax (Sep 2024 – Present)
-                    </button>
-                  </h2>
-                  <div id="projectTwoCollapse" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                      <strong>Logistics Web Portal</strong>
-                      <ul>
-                        <li>Built dynamic UI components with Vue.</li>
-                        <li>Built backend with C# .NET.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
-    
-        <!-- Job 2 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="jobTwo">
-            <button class="accordion-button collapsed" type="button" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#jobTwoCollapse">
-              Software Engineering Intern – Steele Consulting Inc. (Summer 2022)
-            </button>
-          </h2>
-          <div id="jobTwoCollapse" class="accordion-collapse collapse">
-            <div class="accordion-body">
-              <strong>Healthcare Web Portal</strong>
-              <ul>
-                <li>Built dynamic UI components with Angular.</li>
-                <li>Wrote unit tests using Jasmine and Karma for frontend logic.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    
       </div>
     </section>
 
@@ -169,6 +147,6 @@
       max-width: 500px;
     "
   >
-    Avatar placeholder
+    
   </div>
 </div>

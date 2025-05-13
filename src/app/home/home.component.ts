@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Experience } from '../models/experience';
 import { Technology } from '../models/technology';
@@ -6,49 +6,51 @@ import { Technology } from '../models/technology';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass],
+  imports: [NgFor, NgIf, NgClass, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   technologies: Technology[] = [
-    // FE : UI frameworks and languages
-    { name: 'HTML',         category: 'FE',           icon: 'https://www.w3.org/html/logo/downloads/HTML5_Logo_256.png' },
-    { name: 'CSS',          category: 'FE',           icon: 'https://www.w3.org/Style/CSS/Overview.en.html' },
-    { name: 'JavaScript',   category: 'FE',           icon: 'https://www.javascript.com/images/icons/javascript.svg' },
-    { name: 'TypeScript',   category: 'FE',           icon: 'https://www.typescriptlang.org/assets/images/    icons/apple-touch-icon.png' },
-    { name: 'React',        category: 'FE',           icon: 'https://reactjs.org/logo-og.png' },
-    { name: 'Angular',      category: 'FE',           icon: 'https://angular.io/assets/images/logos/angular/angular.svg' },
-    { name: 'Vue',          category: 'FE',           icon: 'https://vuejs.org/images/logo.png' },
-    { name: 'Syncfusion',   category: 'FE',           icon: 'https://www.syncfusion.com/content/images/logo.png' },
-
-    // BE : Server-side frameworks/languages
-    { name: 'Node.js',      category: 'BE',           icon: 'https://nodejs.org/static/images/logo.svg' },
+    // BE
     { name: 'ASP.NET Core', category: 'BE',           icon: 'https://dotnet.microsoft.com/static/images/dotnet-core.svg' },
-
-    // DB : DB technologies
+    { name: 'C#',           category: 'BE',           icon: 'https://docs.microsoft.com/en-us/dotnet/csharp/images/csharp-logo.png' },
+    { name: 'C/C++',        category: 'BE',           icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png' },
+    { name: 'Java',         category: 'BE',           icon: 'https://www.oracle.com/a/ocom/img/cb88-java-logo-001.jpg' },
+    { name: 'Node.js',      category: 'BE',           icon: 'https://nodejs.org/static/images/logo.svg' },
+    { name: 'Python',       category: 'BE',           icon: 'https://www.python.org/community/logos/python-logo-master-v3-TM.png' },
+  
+    // FE
+    { name: 'Angular',      category: 'FE',           icon: 'https://angular.io/assets/images/logos/angular/angular.svg' },
+    { name: 'CSS',          category: 'FE',           icon: 'https://www.w3.org/Style/CSS/Overview.en.html' },
+    { name: 'HTML',         category: 'FE',           icon: 'https://www.w3.org/html/logo/downloads/HTML5_Logo_256.png' },
+    { name: 'JavaScript',   category: 'FE',           icon: 'https://www.javascript.com/images/icons/javascript.svg' },
+    { name: 'React',        category: 'FE',           icon: 'https://reactjs.org/logo-og.png' },
+    { name: 'Syncfusion',   category: 'FE',           icon: 'https://www.syncfusion.com/content/images/logo.png' },
+    { name: 'TypeScript',   category: 'FE',           icon: 'https://www.typescriptlang.org/assets/images/icons/apple-touch-icon.png' },
+    { name: 'Vue',          category: 'FE',           icon: 'https://vuejs.org/images/logo.png' },
+  
+    // DB
     { name: 'MongoDB',      category: 'DB',           icon: 'https://www.mongodb.com/assets/images/global/leaf.svg' },
-    { name: 'PostgreSQL',   category: 'DB',           icon: 'https://www.postgresql.org/media/img/about/press/elephant.png' },
-    { name: 'MySQL',        category: 'DB',           icon: 'https://www.mysql.com/common/logos/logo-mysql-170x115.png' },
     { name: 'MSSQL',        category: 'DB',           icon: 'https://www.microsoft.com/en-us/sql-server/sql-server-downloads/media/sql-server-logo.png' },
-
-    // DevOps : Containers, CI/CD, deployment tools
+    { name: 'MySQL',        category: 'DB',           icon: 'https://www.mysql.com/common/logos/logo-mysql-170x115.png' },
+    { name: 'PostgreSQL',   category: 'DB',           icon: 'https://www.postgresql.org/media/img/about/press/elephant.png' },
+  
+    // DevOps
+    { name: 'AWS',          category: 'DevOps',       icon: 'https://aws.amazon.com/favicon.ico' },
+    { name: 'Azure',        category: 'DevOps',       icon: 'https://azure.microsoft.com/svghandler/azure-logo.svg' },
     { name: 'Docker',       category: 'DevOps',       icon: 'https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png' },
-
-    // Productivity : General developer tools
+    { name: 'Kubernetes',   category: 'DevOps',       icon: 'https://kubernetes.io/images/favicon.png' },
+  
+    // Productivity
+    { name: 'ClickUp',      category: 'Productivity', icon: 'https://www.clickup.com/favicon.ico' },
     { name: 'Git',          category: 'Productivity', icon: 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png' },
     { name: 'Jira',         category: 'Productivity', icon: 'https://wac-cdn.atlassian.com/dam/jcr:3c0f4a2b-5d1e-4a7b-8c6f-9d0e5f3f1b2c/jira-software-logo.png' },
     { name: 'Trello',       category: 'Productivity', icon: 'https://trello.com/favicon.ico' },
-    { name: 'ClickUp',      category: 'Productivity', icon: 'https://www.clickup.com/favicon.ico' },
-
-    // Design : UI/UX design platforms
-    { name: 'Figma',        category: 'Design',       icon: 'https://www.figma.com/favicon.ico' },
-    
-    // Analytics : BI and data visualization
+  
+    // Analytics (BI)
     { name: 'PowerBI',      category: 'Analytics',    icon: 'https://powerbi.microsoft.com/favicon.ico' },
-
-    // Other
-  ]
+  ];  
 
   professional_experience: Experience[] = [
     // Job
@@ -177,4 +179,38 @@ export class HomeComponent {
   private getTechnologies(allTechs: Technology[], names: string[]): Technology[] {
     return names.map(name => allTechs.find(tech => tech.name === name)!);
   }
+
+  get groupedTechnologies() {
+    const grouped: { [key: string]: string[] } = {};
+  
+    // Group the technologies by category
+    for (const tech of this.technologies) {
+      if (!grouped[tech.category]) {
+        grouped[tech.category] = [];
+      }
+      grouped[tech.category].push(tech.name);
+    }
+  
+    return grouped;
+  }
+  
+  public formatCategoryName(key: string): string {
+    switch (key) {
+      case 'FE': return 'Frontend';
+      case 'BE': return 'Backend';
+      case 'DB': return 'Databases';
+      case 'DevOps': return 'DevOps';
+      case 'Productivity': return 'Productivity';
+      case 'Design': return 'Design Tools';
+      case 'Analytics': return 'Business Intelligence'; // Keep Analytics but display as BI
+      case 'Other': return 'Other';
+      default: return key;
+    }
+  }
+  
+  get sortedCategories() {
+    const order = ['BE', 'FE', 'DB', 'DevOps', 'Productivity', 'Analytics']; // Adjusted order
+    return order;
+  }
+  
 }

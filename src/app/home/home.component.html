@@ -23,12 +23,15 @@
       <p>I’m passionate about building software that solves real-world problems and creates practical value. I currently work at a software company in <strong>El Paso, Texas</strong>, where I'm helping build a <strong>logistics web application</strong> using <strong>Vue</strong> and <strong>ASP.NET Core</strong>.</p>
     
       <p>My technical toolkit includes:</p>
-      <ul>
-        <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Angular, Vue</li>
-        <li><strong>Backend:</strong> Node.js, C#, ASP.NET, C/C++, Java, Python</li>
-        <li><strong>Databases:</strong> MSSQL, MySQL, PostgreSQL, MongoDB, AzureDB</li>
-        <li><strong>DevOps:</strong> Azure, AWS</li>
-        <li><strong>Others:</strong> Git, Docker, Kubernetes</li>
+
+      <ul *ngFor="let category of sortedCategories">
+        <li>
+          <strong>{{ formatCategoryName(category) }}: </strong>
+          <span *ngFor="let tech of groupedTechnologies[category]; let i = index">
+            {{ tech }}<span *ngIf="i < groupedTechnologies[category].length - 1">, </span>
+          </span>
+          
+        </li>
       </ul>
     
       <p>I’m always looking to grow as a developer and explore new technologies that improve the way we build and interact with software.</p>

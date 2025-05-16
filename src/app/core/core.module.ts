@@ -4,8 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { AboutMeComponent } from './home/components/about-me/about-me.component';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,

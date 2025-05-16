@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { PagesRoutingModule } from './pages-routing.module';
 
-
-
 @NgModule({
   declarations: [
     AboutMeComponent

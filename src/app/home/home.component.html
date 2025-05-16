@@ -17,28 +17,7 @@
     "
   >
     <section id="about" class="container">
-      <h3 class="mb-4">About Me</h3>
-      <p>👋 Hi there! I’m <strong>Will</strong>, a full-stack software engineer with a background in <strong>Math and Astronomy</strong>. I earned my <strong>Bachelor's degree in Computer Science</strong> from New Mexico State University, where I also minored in Astronomy.</p>
-    
-      <p>I’m passionate about building software that solves real-world problems and creates practical value. I currently work at a software company in <strong>El Paso, Texas</strong>, where I'm helping build a <strong>logistics web application</strong> using <strong>Vue</strong> and <strong>ASP.NET Core</strong>.</p>
-    
-      <p>My technical toolkit includes:</p>
-
-      <ul *ngFor="let category of sortedCategories">
-        <li>
-          <strong>{{ formatCategoryName(category) }}: </strong>
-          <span *ngFor="let tech of groupedTechnologies[category]; let i = index">
-            {{ tech }}<span *ngIf="i < groupedTechnologies[category].length - 1">, </span>
-          </span>
-          
-        </li>
-      </ul>
-    
-      <p>I’m always looking to grow as a developer and explore new technologies that improve the way we build and interact with software.</p>
-    
-      <p>When I’m not coding, you’ll find me diving into RPG and strategy games, reading science fiction and fantasy novels, or planning to adopt my future sidekick—a baby black cat. 🐾</p>
-    
-      <p>Thanks for stopping by!</p>
+      <app-about-me [technologies]="technologies"></app-about-me>
     </section>
 
     <section id="experience" class="container">

@@ -2,11 +2,17 @@ import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Experience } from '../models/experience';
 import { Technology } from '../models/technology';
+import { AboutMeComponent } from '../about-me/about-me.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, CommonModule],
+  imports: [
+    NgFor,
+    NgClass, 
+    CommonModule,
+    AboutMeComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -189,38 +195,4 @@ export class HomeComponent {
   private getTechnologies(allTechs: Technology[], names: string[]): Technology[] {
     return names.map(name => allTechs.find(tech => tech.name === name)!);
   }
-
-  get groupedTechnologies() {
-    const grouped: { [key: string]: string[] } = {};
-  
-    // Group the technologies by category
-    for (const tech of this.technologies) {
-      if (!grouped[tech.category]) {
-        grouped[tech.category] = [];
-      }
-      grouped[tech.category].push(tech.name);
-    }
-  
-    return grouped;
-  }
-  
-  public formatCategoryName(key: string): string {
-    switch (key) {
-      case 'FE': return 'Frontend';
-      case 'BE': return 'Backend';
-      case 'DB': return 'Databases';
-      case 'DevOps': return 'DevOps';
-      case 'Productivity': return 'Productivity';
-      case 'Design': return 'Design Tools';
-      case 'Analytics': return 'Business Intelligence'; // Keep Analytics but display as BI
-      case 'Other': return 'Other';
-      default: return key;
-    }
-  }
-  
-  get sortedCategories() {
-    const order = ['BE', 'FE', 'DB', 'DevOps', 'Productivity', 'Analytics']; // Adjusted order
-    return order;
-  }
-  
 }

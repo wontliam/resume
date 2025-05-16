@@ -23,10 +23,15 @@
       <p>I’m passionate about building software that solves real-world problems and creates practical value. I currently work at a software company in <strong>El Paso, Texas</strong>, where I'm helping build a <strong>logistics web application</strong> using <strong>Vue</strong> and <strong>ASP.NET Core</strong>.</p>
     
       <p>My technical toolkit includes:</p>
-      <ul>
-        <li><strong>Front-end:</strong> HTML, CSS, JavaScript, Angular, Vue</li>
-        <li><strong>Back-end:</strong> Node.js, C#, ASP.NET, C/C++, Java, Python</li>
-        <li><strong>Databases:</strong> MSSQL, MySQL, PostgreSQL, MongoDB, AzureDB</li>
+
+      <ul *ngFor="let category of sortedCategories">
+        <li>
+          <strong>{{ formatCategoryName(category) }}: </strong>
+          <span *ngFor="let tech of groupedTechnologies[category]; let i = index">
+            {{ tech }}<span *ngIf="i < groupedTechnologies[category].length - 1">, </span>
+          </span>
+          
+        </li>
       </ul>
     
       <p>I’m always looking to grow as a developer and explore new technologies that improve the way we build and interact with software.</p>
@@ -50,8 +55,8 @@
               [attr.data-bs-target]="'#jobCollapse' + i"
             >
               <!-- Title – Company, Location (Duration) -->
-              <div class="col">{{job.jobTitle}} - {{job.company}}, {{job.location}}</div>
-              <div class="col" style="text-align: end;">({{job.duration}})</div>
+              <div class="d-flex flex-column flex-grow-1">{{job.jobTitle}} - {{job.company}}, {{job.location}}</div>
+              <div class="d-flex flex-column">{{job.duration}}</div>
             </button>
           </h2>
           <div [id]="'jobCollapse' + i" class="accordion-collapse collapse">
@@ -69,8 +74,8 @@
                       [attr.data-bs-target]="'#projectCollapse' + i + j"
                     >
                       <!-- Company - Project Name (Duration) -->
-                      <div class="col">{{project.company}} - {{project.projectName}}</div>
-                      <div class="col" style="text-align: end;">({{project.duration}})</div>
+                      <div class="d-flex flex-column flex-grow-1">{{project.company}} - {{project.projectName}}</div>
+                      <div class="d-flex flex-column">{{project.duration}}</div>
                     </button>
                   </h2>
                   <div [id]="'projectCollapse' + i + j" class="accordion-collapse collapse">
@@ -79,7 +84,20 @@
                       <p>
                         <strong>Technologies: </strong>
                         <ng-container *ngFor="let tech of project.technologies">
-                          <span class="badge bg-secondary me-1">{{tech}}</span>
+                          <span
+                            class="badge me-1"
+                            [ngClass]="{
+                              'bg-primary': tech.category === 'FE',
+                              'bg-success': tech.category === 'BE',
+                              'bg-info': tech.category === 'DB',
+                              'bg-warning': tech.category === 'DevOps',
+                              'bg-secondary': tech.category === 'Productivity',
+                              'bg-dark': tech.category === 'Design',
+                              'bg-danger': tech.category === 'Analytics'
+                            }"                       
+                          >
+                            {{tech.name}}
+                          </span>
                         </ng-container>
                       </p>
                       <ul *ngFor="let description of project.descriptions">
@@ -99,11 +117,11 @@
     <section id="education" class="container">
       <h3 class="mb-4">Education</h3>
       <div>
-        <div class="row">
-          <span class="col col-6">
+        <div class="d-flex flex-row">
+          <span class="d-flex d-column flex-grow-1">
             <h5><strong>New Mexico State University</strong></h5>
           </span>
-          <span class="col col-6 text-end">
+          <span class="d-flex d-column" style="padding-right: 20px;">
             <p>Jan 2019 – Dec 2022</p>
           </span>
         </div>

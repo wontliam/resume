@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
 
 const routes: Routes = [
-  { path: 'about-me', pathMatch: 'full', component: AboutMeComponent },
+  { path: 'about-me', component: AboutMeComponent },
 ];
 
 @NgModule({

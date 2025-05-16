@@ -1,11 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Technology } from '../models/technology';
-import { NgFor, NgIf } from '@angular/common';
+import { Technology } from '../../../../models/technology';
 
 @Component({
   selector: 'app-about-me',
-  standalone: true,
-  imports: [NgIf, NgFor],
+  standalone: false,
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.css'
 })

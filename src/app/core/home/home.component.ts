@@ -1,18 +1,10 @@
-import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { Experience } from '../models/experience';
-import { Technology } from '../models/technology';
-import { AboutMeComponent } from '../about-me/about-me.component';
+import { Experience } from '../../models/experience';
+import { Technology } from '../../models/technology';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [
-    NgFor,
-    NgClass, 
-    CommonModule,
-    AboutMeComponent
-  ],
+  standalone: false,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -179,14 +171,6 @@ export class HomeComponent {
       ]
     }
   ]
-
-  constructor() {
-    // Initialization logic can go here
-  }
-
-  ngOnInit() {
-    // Component initialization logic can go here
-  }
 
   onDownloadResume() {
     console.log('Download Resume button clicked');

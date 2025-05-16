@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
 
 @Component({
@@ -10,9 +10,9 @@ import { PagesModule } from './pages/pages.module';
   standalone: true,
   imports: [
     RouterOutlet,
-    HomeComponent,
     NavbarComponent,
     FooterComponent,
+    CoreModule,
     PagesModule
   ],
   templateUrl: './app.component.html',
